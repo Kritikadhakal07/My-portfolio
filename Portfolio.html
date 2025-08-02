@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepa Dhakal - Junior Web Developer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .name {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .title {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+        }
+
+        .contact-item:hover {
+            color: white;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .summary {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #555;
+            text-align: justify;
+        }
+
+        .experience-item, .education-item {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .experience-item:last-child, .education-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .job-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .company, .institution {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #3498db;
+            margin-bottom: 5px;
+        }
+
+        .duration {
+            color: #7f8c8d;
+            font-weight: 500;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+        }
+
+        .description {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .description ul {
+            margin-left: 20px;
+            margin-top: 8px;
+        }
+
+        .description li {
+            margin-bottom: 6px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 4px solid #3498db;
+        }
+
+        .skill-category h4 {
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+
+        .skill-list {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .project-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 4px solid #3498db;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .project-link {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        .project-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .project-tech {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            font-weight: 500;
+        }
+
+        .languages-list {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .language-item {
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+
+        .language-name {
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .language-level {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 0;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .name {
+                font-size: 1.8rem;
+            }
+
+            .contact-info {
+                gap: 15px;
+                font-size: 0.8rem;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .languages-list {
+                flex-direction: column;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .container {
+                box-shadow: none;
+                margin: 0;
+            }
+            
+            .header {
+                background: #2c3e50 !important;
+                -webkit-print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="name">DEEPA DHAKAL</h1>
+            <p class="title">Junior Web Developer</p>
+            <div class="contact-info">
+                <span class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Baluwatar, Kathmandu, Nepal
+                </span>
+                <a href="tel:+9779845187207" class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    +977 9845187207
+                </a>
+                <a href="mailto:kritikadhakal211@gmail.com" class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    kritikadhakal211@gmail.com
+                </a>
+                <a href="https://www.linkedin.com/in/kritika-dhakal-090007269/" class="contact-item" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/Kritikadhakal07" class="contact-item" target="_blank">
+                    <i class="fab fa-github"></i>
+                    GitHub
+                </a>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Professional Summary -->
+            <div class="section">
+                <h2 class="section-title">Professional Summary</h2>
+                <div class="summary">
+                    <strong>Junior Web Developer</strong> with hands-on professional experience in <strong>full-stack development</strong>, specializing in <strong>PHP, Laravel, React.js, and Django</strong>. Successfully completed internship and currently working remotely as a junior developer while completing BCA studies. Proven ability to deliver <strong>production-ready applications</strong>, collaborate effectively in remote teams, and adapt quickly to new technologies. Experience with <strong>AI integration, RESTful APIs, and modern JavaScript frameworks</strong>.
+                </div>
+            </div>
+
+            <!-- Experience -->
+            <div class="section">
+                <h2 class="section-title">Experience</h2>
+                
+                <div class="experience-item">
+                    <h3 class="job-title">Junior Web Developer</h3>
+                    <p class="company">Remote Colleagues Pvt. Ltd.</p>
+                    <p class="duration">March 2025 - Present</p>
+                    <div class="description">
+                        <ul>
+                            <li>Developing <strong>Wholesale Console</strong>, a car auction platform with real-time Laravel applications</li>
+                            <li>Building responsive front-end interfaces using <strong>HTML, CSS, Bootstrap, and JavaScript</strong></li>
+                            <li>Implementing back-end functionality with <strong>PHP and Laravel framework</strong></li>
+                            <li>Participating in daily stand-ups and collaborating through <strong>Git version control</strong></li>
+                            <li>Enhancing expertise in <strong>MVC architecture, RESTful APIs, and Laravel best practices</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <h3 class="job-title">Intern Web Developer</h3>
+                    <p class="company">Remote Colleagues Pvt. Ltd.</p>
+                    <p class="duration">November 2024 - March 2025</p>
+                    <div class="description">
+                        <ul>
+                            <li>Worked on <strong>RC Portal</strong> - real-time Laravel projects involving modules like user management, admin and company management</li>
+                            <li>Developed <strong>Laravel-based projects</strong> with focus on user management systems</li>
+                            <li>Collaborated with development team using <strong>version control (Git)</strong></li>
+                            <li>Applied <strong>object-oriented programming concepts</strong> and data structures knowledge</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="section">
+                <h2 class="section-title">Education</h2>
+                
+                <div class="education-item">
+                    <h3 class="job-title">Bachelor of Computer Application (BCA)</h3>
+                    <p class="institution">Aadim National College, Kathmandu</p>
+                    <p class="duration">February 2024 - Present</p>
+                </div>
+
+                <div class="education-item">
+                    <h3 class="job-title">SEE (Secondary Education Examination)</h3>
+                    <p class="institution">National School of Sciences, Kathmandu</p>
+                    <p class="duration">April 2021 - March 2023</p>
+                </div>
+            </div>
+
+            <!-- Technical Skills -->
+            <div class="section">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Programming Languages</h4>
+                        <div class="skill-list">PHP, JavaScript, Java, Python, HTML5, CSS3</div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Frameworks & Libraries</h4>
+                        <div class="skill-list">Laravel, React.js, Django, Bootstrap, LangChain</div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Databases</h4>
+                        <div class="skill-list">MySQL, PostgreSQL</div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Tools & Technologies</h4>
+                        <div class="skill-list">Git/GitHub, Visual Studio Code, XAMPP, Postman, Axios, Responsive Web Design</div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Core Concepts</h4>
+                        <div class="skill-list">Object-Oriented Programming (OOP), Data Structures and Algorithms (DSA), MVC Architecture, RESTful APIs, CRUD Operations, Database Integration, AI Integration</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects -->
+            <div class="section">
+                <h2 class="section-title">Projects</h2>
+                
+                <div class="project-item">
+                    <h3 class="project-title">AI-Powered Online Exam Platform (Aspirant Helper)</h3>
+                    <a href="https://github.com/Ritesh100/Aspirant-Helper" class="project-link" target="_blank">
+                        <i class="fab fa-github"></i> https://github.com/Ritesh100/Aspirant-Helper
+                    </a>
+                    <div class="project-description">
+                        Developed <strong>RESTful APIs in Django</strong> to handle PDF syllabus uploads, text extraction, and automated MCQ generation using <strong>LangChain integrated with OpenRouter</strong>. Implemented secure file storage and efficient data management with PostgreSQL. Built a dynamic, responsive <strong>React frontend</strong> allowing users to select universities and programs with real-time data fetching using Axios and React hooks. Crafted user-friendly UI layouts leveraging Bootstrap for seamless responsiveness across devices. Managed environment variables securely and performed thorough <strong>API testing with Postman</strong> to ensure robust functionality.
+                    </div>
+                    <div class="project-tech">
+                        <strong>Technologies:</strong> React.js, Django, REST API, LangChain, OpenRouter, PostgreSQL, Bootstrap, Axios
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <h3 class="project-title">Wholesale Console</h3>
+                    <a href="https://wholesaleconsole.com" class="project-link" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> https://wholesaleconsole.com
+                    </a>
+                    <div class="project-description">
+                        Currently developing features for a <strong>car auction platform</strong> using Laravel framework. Implementing responsive front-end with HTML, CSS, Bootstrap, and JavaScript. Integrating backend functionality for product listings, bidding system, and user management. Ensuring scalable architecture and clean code practices.
+                    </div>
+                    <div class="project-tech">
+                        <strong>Technologies:</strong> Laravel, PHP, JavaScript, Bootstrap, MySQL
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <h3 class="project-title">RC Portal Development</h3>
+                    <a href="https://rcm.remotecolleagues.com" class="project-link" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> https://rcm.remotecolleagues.com
+                    </a>
+                    <div class="project-description">
+                        Built comprehensive modules including <strong>user authentication and admin dashboard</strong>. Developed full-stack functionality using Laravel with emphasis on maintainable code. Implemented secure login system with role-based access controls. Contributed to a production system currently used by Remote Colleagues for internal operations.
+                    </div>
+                    <div class="project-tech">
+                        <strong>Technologies:</strong> Laravel, PHP, MySQL, Authentication, Role-based Access Control
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <h3 class="project-title">Personal Portfolio Website</h3>
+                    <a href="http://127.0.0.1:5500/fimal.html" class="project-link">
+                        <i class="fas fa-external-link-alt"></i> http://127.0.0.1:5500/fimal.html
+                    </a>
+                    <div class="project-description">
+                        Developed a comprehensive <strong>personal portfolio website</strong> showcasing professional experience, projects, and technical skills. Created responsive design with modern UI/UX principles, featuring interactive elements and clean code structure. Demonstrates proficiency in front-end development and attention to detail in presenting professional information.
+                    </div>
+                    <div class="project-tech">
+                        <strong>Technologies:</strong> HTML5, CSS3, JavaScript, Responsive Design
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <h3 class="project-title">Futsal Booking System</h3>
+                    <p class="project-link" style="color: #7f8c8d;">Personal Project</p>
+                    <div class="project-description">
+                        Developed booking system using <strong>core PHP, HTML, and CSS</strong>. Created intuitive user interface for viewing available time slots and booking matches. Focused on clean backend logic and user-friendly design principles.
+                    </div>
+                    <div class="project-tech">
+                        <strong>Technologies:</strong> Core PHP, HTML, CSS, MySQL
+                    </div>
+                </div>
+            </div>
+
+            <!-- Languages -->
+            <div class="section">
+                <h2 class="section-title">Languages</h2>
+                <div class="languages-list">
+                    <div class="language-item">
+                        <p class="language-name">Nepali</p>
+                        <p class="language-level">Native</p>
+                    </div>
+                    <div class="language-item">
+                        <p class="language-name">English</p>
+                        <p class="language-level">Proficient</p>
+                    </div>
+                    <div class="language-item">
+                        <p class="language-name">Hindi</p>
+                        <p class="language-level">Intermediate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
