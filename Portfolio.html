@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deepa Dhakal - Junior Web Developer</title>
+    <title>Deepa Dhakal - Full Stack Developer</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         * {
@@ -12,476 +12,1130 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: #f8f9fa;
+            background: #fff;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 20px auto;
-            background: white;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: #3498db;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #3498db;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            position: relative;
             overflow: hidden;
         }
 
-        .header {
-            background: #2c3e50;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.1)" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
             color: white;
-            padding: 40px;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeInRight 1s ease 0.8s both;
+        }
+
+        .profile-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             text-align: center;
         }
 
-        .name {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            letter-spacing: 1px;
-        }
-
-        .title {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            opacity: 0.9;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-            font-size: 0.9rem;
-        }
-
-        .contact-item {
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
             display: flex;
             align-items: center;
-            gap: 6px;
-            color: rgba(255, 255, 255, 0.9);
-            text-decoration: none;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 80px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
         }
 
-        .contact-item:hover {
-            color: white;
-        }
-
-        .content {
-            padding: 40px;
-        }
-
+        /* Sections */
         .section {
-            margin-bottom: 35px;
+            padding: 5rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
         .section-title {
-            font-size: 1.4rem;
+            text-align: center;
+            font-size: 2.5rem;
             font-weight: 700;
+            margin-bottom: 3rem;
             color: #2c3e50;
-            margin-bottom: 20px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #3498db;
+            position: relative;
         }
 
-        .summary {
-            font-size: 1rem;
-            line-height: 1.7;
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
             color: #555;
-            text-align: justify;
         }
 
-        .experience-item, .education-item {
-            margin-bottom: 25px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
-        .experience-item:last-child, .education-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 4px solid #3498db;
         }
 
-        .job-title {
-            font-size: 1.2rem;
+        .stat-number {
+            font-size: 2rem;
             font-weight: 700;
             color: #2c3e50;
-            margin-bottom: 5px;
+            margin-bottom: 0.5rem;
         }
 
-        .company, .institution {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #3498db;
-            margin-bottom: 5px;
-        }
-
-        .duration {
+        .stat-label {
             color: #7f8c8d;
             font-weight: 500;
-            margin-bottom: 12px;
-            font-size: 0.9rem;
         }
 
-        .description {
-            color: #555;
-            line-height: 1.6;
-        }
-
-        .description ul {
-            margin-left: 20px;
-            margin-top: 8px;
-        }
-
-        .description li {
-            margin-bottom: 6px;
+        /* Skills Section */
+        .skills {
+            background: #f8f9fa;
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
 
         .skill-category {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 6px;
-            border-left: 4px solid #3498db;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
         }
 
-        .skill-category h4 {
-            font-weight: 700;
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
             color: #2c3e50;
-            margin-bottom: 12px;
-            font-size: 1rem;
         }
 
         .skill-list {
-            color: #555;
-            line-height: 1.8;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
-        .project-item {
-            margin-bottom: 25px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 6px;
-            border-left: 4px solid #3498db;
+        .skill-tag {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
         }
 
         .project-title {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 700;
+            margin-bottom: 0.5rem;
             color: #2c3e50;
-            margin-bottom: 5px;
+        }
+
+        .project-description {
+            color: #555;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tag {
+            background: #f1f3f5;
+            color: #495057;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
         }
 
         .project-link {
             color: #3498db;
             text-decoration: none;
-            font-size: 0.9rem;
-            margin-bottom: 8px;
-            display: inline-block;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: color 0.3s ease;
         }
 
         .project-link:hover {
-            text-decoration: underline;
+            color: #2980b9;
         }
 
-        .project-description {
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 10px;
+        /* Contact Section */
+        .contact {
+            background: #2c3e50;
+            color: white;
         }
 
-        .project-tech {
-            font-size: 0.9rem;
-            color: #7f8c8d;
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
             font-weight: 500;
         }
 
-        .languages-list {
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .contact-info {
             display: flex;
-            gap: 30px;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 2rem;
         }
 
-        .language-item {
-            flex: 1;
-            min-width: 120px;
-            text-align: center;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 6px;
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
-        .language-name {
-            font-weight: 700;
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: white;
             color: #2c3e50;
-            margin-bottom: 5px;
+            transform: translateY(-3px);
         }
 
-        .language-level {
-            color: #7f8c8d;
-            font-size: 0.9rem;
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
         }
 
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .container {
-                margin: 10px;
-                border-radius: 0;
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: white;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding: 2rem 0;
             }
 
-            .header {
-                padding: 30px 20px;
+            .nav-menu.active {
+                left: 0;
             }
 
-            .name {
-                font-size: 1.8rem;
+            .mobile-menu {
+                display: flex;
             }
 
-            .contact-info {
-                gap: 15px;
-                font-size: 0.8rem;
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
             }
 
-            .content {
-                padding: 30px 20px;
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
             }
 
             .skills-grid {
                 grid-template-columns: 1fr;
             }
-
-            .languages-list {
-                flex-direction: column;
-            }
-        }
-
-        @media print {
-            body {
-                background: white;
-            }
-            
-            .container {
-                box-shadow: none;
-                margin: 0;
-            }
-            
-            .header {
-                background: #2c3e50 !important;
-                -webkit-print-color-adjust: exact;
-            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <h1 class="name">DEEPA DHAKAL</h1>
-            <p class="title">Junior Web Developer</p>
-            <div class="contact-info">
-                <span class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    Baluwatar, Kathmandu, Nepal
-                </span>
-                <a href="tel:+9779845187207" class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    +977 9845187207
-                </a>
-                <a href="mailto:kritikadhakal211@gmail.com" class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    kritikadhakal211@gmail.com
-                </a>
-                <a href="https://www.linkedin.com/in/kritika-dhakal-090007269/" class="contact-item" target="_blank">
-                    <i class="fab fa-linkedin"></i>
-                    LinkedIn
-                </a>
-                <a href="https://github.com/Kritikadhakal07" class="contact-item" target="_blank">
-                    <i class="fab fa-github"></i>
-                    GitHub
-                </a>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Deepa Dhakal</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
+    </nav>
 
-        <!-- Content -->
-        <div class="content">
-            <!-- Professional Summary -->
-            <div class="section">
-                <h2 class="section-title">Professional Summary</h2>
-                <div class="summary">
-                    <strong>Junior Web Developer</strong> with hands-on professional experience in <strong>full-stack development</strong>, specializing in <strong>PHP, Laravel, React.js, and Django</strong>. Successfully completed internship and currently working remotely as a junior developer while completing BCA studies. Proven ability to deliver <strong>production-ready applications</strong>, collaborate effectively in remote teams, and adapt quickly to new technologies. Experience with <strong>AI integration, RESTful APIs, and modern JavaScript frameworks</strong>.
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Hello, I'm Deepa</h1>
+                <p class="subtitle">Full Stack Developer</p>
+                <p>Passionate about creating innovative web solutions with modern technologies. Specializing in Laravel, React, Django, and AI integration.</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-code"></i>
+                        View My Work
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i>
+                        Get In Touch
+                    </a>
                 </div>
             </div>
+            <div class="hero-image">
+                <div class="profile-card">
+                    <div class="profile-img">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Junior Web Developer</h3>
+                    <p>Kathmandu, Nepal</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <!-- Experience -->
-            <div class="section">
-                <h2 class="section-title">Experience</h2>
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-number">2+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">5+</div>
+                            <div class="stat-label">Projects</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">8+</div>
+                            <div class="stat-label">Technologies</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <p>I'm a <strong>Junior Web Developer</strong> with hands-on professional experience in full-stack development, specializing in <strong>PHP, Laravel, React.js, and Django</strong>. Currently working remotely at Remote Colleagues Pvt. Ltd. while completing my BCA studies.</p>
+                    
+                    <p>My journey began with an internship where I worked on real-time Laravel projects, and I've since progressed to developing production-ready applications including AI-powered platforms and auction systems.</p>
+                    
+                    <p>I'm passionate about <strong>clean code</strong>, <strong>modern web technologies</strong>, and creating user-friendly applications that solve real-world problems. Currently expanding my expertise in <strong>AI integration</strong> and <strong>advanced React patterns</strong>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Frontend Development</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">React.js</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">Bootstrap</span>
+                        <span class="skill-tag">Axios</span>
+                    </div>
+                </div>
                 
-                <div class="experience-item">
-                    <h3 class="job-title">Junior Web Developer</h3>
-                    <p class="company">Remote Colleagues Pvt. Ltd.</p>
-                    <p class="duration">March 2025 - Present</p>
-                    <div class="description">
-                        <ul>
-                            <li>Developing <strong>Wholesale Console</strong>, a car auction platform with real-time Laravel applications</li>
-                            <li>Building responsive front-end interfaces using <strong>HTML, CSS, Bootstrap, and JavaScript</strong></li>
-                            <li>Implementing back-end functionality with <strong>PHP and Laravel framework</strong></li>
-                            <li>Participating in daily stand-ups and collaborating through <strong>Git version control</strong></li>
-                            <li>Enhancing expertise in <strong>MVC architecture, RESTful APIs, and Laravel best practices</strong></li>
-                        </ul>
+                <div class="skill-category">
+                    <div class="skill-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Backend Development</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">Laravel</span>
+                        <span class="skill-tag">Django</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">REST API</span>
+                        <span class="skill-tag">MVC</span>
                     </div>
                 </div>
-
-                <div class="experience-item">
-                    <h3 class="job-title">Intern Web Developer</h3>
-                    <p class="company">Remote Colleagues Pvt. Ltd.</p>
-                    <p class="duration">November 2024 - March 2025</p>
-                    <div class="description">
-                        <ul>
-                            <li>Worked on <strong>RC Portal</strong> - real-time Laravel projects involving modules like user management, admin and company management</li>
-                            <li>Developed <strong>Laravel-based projects</strong> with focus on user management systems</li>
-                            <li>Collaborated with development team using <strong>version control (Git)</strong></li>
-                            <li>Applied <strong>object-oriented programming concepts</strong> and data structures knowledge</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Education -->
-            <div class="section">
-                <h2 class="section-title">Education</h2>
                 
-                <div class="education-item">
-                    <h3 class="job-title">Bachelor of Computer Application (BCA)</h3>
-                    <p class="institution">Aadim National College, Kathmandu</p>
-                    <p class="duration">February 2024 - Present</p>
-                </div>
-
-                <div class="education-item">
-                    <h3 class="job-title">SEE (Secondary Education Examination)</h3>
-                    <p class="institution">National School of Sciences, Kathmandu</p>
-                    <p class="duration">April 2021 - March 2023</p>
-                </div>
-            </div>
-
-            <!-- Technical Skills -->
-            <div class="section">
-                <h2 class="section-title">Technical Skills</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h4>Programming Languages</h4>
-                        <div class="skill-list">PHP, JavaScript, Java, Python, HTML5, CSS3</div>
+                <div class="skill-category">
+                    <div class="skill-icon">
+                        <i class="fas fa-database"></i>
                     </div>
-                    <div class="skill-category">
-                        <h4>Frameworks & Libraries</h4>
-                        <div class="skill-list">Laravel, React.js, Django, Bootstrap, LangChain</div>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Databases</h4>
-                        <div class="skill-list">MySQL, PostgreSQL</div>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Tools & Technologies</h4>
-                        <div class="skill-list">Git/GitHub, Visual Studio Code, XAMPP, Postman, Axios, Responsive Web Design</div>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Core Concepts</h4>
-                        <div class="skill-list">Object-Oriented Programming (OOP), Data Structures and Algorithms (DSA), MVC Architecture, RESTful APIs, CRUD Operations, Database Integration, AI Integration</div>
+                    <h3>Database & Tools</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">Git/GitHub</span>
+                        <span class="skill-tag">Postman</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">XAMPP</span>
                     </div>
                 </div>
-            </div>
-
-            <!-- Projects -->
-            <div class="section">
-                <h2 class="section-title">Projects</h2>
                 
-                <div class="project-item">
-                    <h3 class="project-title">AI-Powered Online Exam Platform (Aspirant Helper)</h3>
-                    <a href="https://github.com/Ritesh100/Aspirant-Helper" class="project-link" target="_blank">
-                        <i class="fab fa-github"></i> https://github.com/Ritesh100/Aspirant-Helper
-                    </a>
-                    <div class="project-description">
-                        Developed <strong>RESTful APIs in Django</strong> to handle PDF syllabus uploads, text extraction, and automated MCQ generation using <strong>LangChain integrated with OpenRouter</strong>. Implemented secure file storage and efficient data management with PostgreSQL. Built a dynamic, responsive <strong>React frontend</strong> allowing users to select universities and programs with real-time data fetching using Axios and React hooks. Crafted user-friendly UI layouts leveraging Bootstrap for seamless responsiveness across devices. Managed environment variables securely and performed thorough <strong>API testing with Postman</strong> to ensure robust functionality.
+                <div class="skill-category">
+                    <div class="skill-icon">
+                        <i class="fas fa-brain"></i>
                     </div>
-                    <div class="project-tech">
-                        <strong>Technologies:</strong> React.js, Django, REST API, LangChain, OpenRouter, PostgreSQL, Bootstrap, Axios
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <h3 class="project-title">Wholesale Console</h3>
-                    <a href="https://wholesaleconsole.com" class="project-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i> https://wholesaleconsole.com
-                    </a>
-                    <div class="project-description">
-                        Currently developing features for a <strong>car auction platform</strong> using Laravel framework. Implementing responsive front-end with HTML, CSS, Bootstrap, and JavaScript. Integrating backend functionality for product listings, bidding system, and user management. Ensuring scalable architecture and clean code practices.
-                    </div>
-                    <div class="project-tech">
-                        <strong>Technologies:</strong> Laravel, PHP, JavaScript, Bootstrap, MySQL
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <h3 class="project-title">RC Portal Development</h3>
-                    <a href="https://rcm.remotecolleagues.com" class="project-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i> https://rcm.remotecolleagues.com
-                    </a>
-                    <div class="project-description">
-                        Built comprehensive modules including <strong>user authentication and admin dashboard</strong>. Developed full-stack functionality using Laravel with emphasis on maintainable code. Implemented secure login system with role-based access controls. Contributed to a production system currently used by Remote Colleagues for internal operations.
-                    </div>
-                    <div class="project-tech">
-                        <strong>Technologies:</strong> Laravel, PHP, MySQL, Authentication, Role-based Access Control
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <h3 class="project-title">Personal Portfolio Website</h3>
-                    <a href="http://127.0.0.1:5500/fimal.html" class="project-link">
-                        <i class="fas fa-external-link-alt"></i> http://127.0.0.1:5500/fimal.html
-                    </a>
-                    <div class="project-description">
-                        Developed a comprehensive <strong>personal portfolio website</strong> showcasing professional experience, projects, and technical skills. Created responsive design with modern UI/UX principles, featuring interactive elements and clean code structure. Demonstrates proficiency in front-end development and attention to detail in presenting professional information.
-                    </div>
-                    <div class="project-tech">
-                        <strong>Technologies:</strong> HTML5, CSS3, JavaScript, Responsive Design
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <h3 class="project-title">Futsal Booking System</h3>
-                    <p class="project-link" style="color: #7f8c8d;">Personal Project</p>
-                    <div class="project-description">
-                        Developed booking system using <strong>core PHP, HTML, and CSS</strong>. Created intuitive user interface for viewing available time slots and booking matches. Focused on clean backend logic and user-friendly design principles.
-                    </div>
-                    <div class="project-tech">
-                        <strong>Technologies:</strong> Core PHP, HTML, CSS, MySQL
-                    </div>
-                </div>
-            </div>
-
-            <!-- Languages -->
-            <div class="section">
-                <h2 class="section-title">Languages</h2>
-                <div class="languages-list">
-                    <div class="language-item">
-                        <p class="language-name">Nepali</p>
-                        <p class="language-level">Native</p>
-                    </div>
-                    <div class="language-item">
-                        <p class="language-name">English</p>
-                        <p class="language-level">Proficient</p>
-                    </div>
-                    <div class="language-item">
-                        <p class="language-name">Hindi</p>
-                        <p class="language-level">Intermediate</p>
+                    <h3>AI & Advanced</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">LangChain</span>
+                        <span class="skill-tag">OpenRouter</span>
+                        <span class="skill-tag">AI Integration</span>
+                        <span class="skill-tag">OOP</span>
+                        <span class="skill-tag">DSA</span>
+                        <span class="skill-tag">CRUD</span>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">AI-Powered Online Exam Platform</h3>
+                        <p class="project-description">
+                            Full-stack application with AI-powered MCQ generation using LangChain and OpenRouter. Features PDF syllabus processing, automated question generation, and responsive React frontend.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React.js</span>
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">LangChain</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">REST API</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Ritesh100/Aspirant-Helper" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Wholesale Console</h3>
+                        <p class="project-description">
+                            Car auction platform with real-time bidding system. Features responsive design, user management, and scalable Laravel architecture for production use.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Bootstrap</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://wholesaleconsole.com" class="project-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">RC Portal Development</h3>
+                        <p class="project-description">
+                            Enterprise portal with comprehensive user management, admin dashboard, and role-based access controls. Built with Laravel for internal company operations.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Authentication</span>
+                            <span class="tech-tag">RBAC</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://rcm.remotecolleagues.com" class="project-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-futbol"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Futsal Booking System</h3>
+                        <p class="project-description">
+                            Intuitive booking system for futsal courts with time slot management and user-friendly interface. Built with core PHP focusing on clean backend logic.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Core PHP</span>
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Kritikadhakal07" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <h3 style="margin-bottom: 1.5rem;">Send me a message</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Your message here..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Baluwatar, Kathmandu, Nepal</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+977 9845187207</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>kritikadhakal211@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/kritika-dhakal-090007269/" class="social-link" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/Kritikadhakal07" class="social-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:kritikadhakal211@gmail.com" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:+9779845187207" class="social-link">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Deepa Dhakal. All rights reserved. | Built with ❤️ using HTML, CSS & JavaScript</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.15)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Form submission handler
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Simple validation
+            if (!name || !email || !message) {
+                alert('Please fill in all fields.');
+                return;
+            }
+            
+            // Create mailto link
+            const subject = `Message from ${name} via Portfolio`;
+            const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+            const mailtoLink = `mailto:kritikadhakal211@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Show success message
+            alert('Thank you for your message! Your email client should open now.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.skill-category, .project-card, .stat-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Typing effect for hero subtitle
+        const subtitle = document.querySelector('.hero-text .subtitle');
+        const roles = ['Full Stack Developer', 'Laravel Specialist', 'React Developer', 'AI Enthusiast'];
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeRole() {
+            const currentRole = roles[roleIndex];
+            
+            if (isDeleting) {
+                subtitle.textContent = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                subtitle.textContent = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentRole.length) {
+                typeSpeed = 2000; // Pause at end
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+                typeSpeed = 500; // Pause before next role
+            }
+
+            setTimeout(typeRole, typeSpeed);
+        }
+
+        // Start typing effect after page load
+        setTimeout(typeRole, 1000);
+
+        // Add floating animation to profile card
+        const profileCard = document.querySelector('.profile-card');
+        let floatDirection = 1;
+
+        setInterval(() => {
+            const currentTransform = profileCard.style.transform || 'translateY(0px)';
+            const currentY = parseFloat(currentTransform.match(/translateY\(([^)]+)\)/)?.[1] || 0);
+            
+            if (currentY >= 10) floatDirection = -1;
+            if (currentY <= -10) floatDirection = 1;
+            
+            profileCard.style.transform = `translateY(${currentY + (floatDirection * 0.5)}px)`;
+        }, 100);
+
+        // Add click effect to buttons
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add ripple effect styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .btn {
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.6);
+                transform: scale(0);
+                animation: ripple-animation 0.6s linear;
+                pointer-events: none;
+            }
+            
+            @keyframes ripple-animation {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>
